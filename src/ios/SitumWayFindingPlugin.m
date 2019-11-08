@@ -1,15 +1,17 @@
 /********* cordova-plugin-wayfinding.m Cordova Plugin Implementation *******/
 
 #import <Cordova/CDV.h>
+#import "PluginMap.h"
+@import SitumWayfindingPod;
 
-@interface SitumWayFindingPlugin : CDVPlugin {
+@interface SitumWayfindingPlugin : CDVPlugin {
   // Member variables go here.
 }
 
 - (void)load:(CDVInvokedUrlCommand*)command;
 @end
 
-@implementation SitumWayFindingPlugin
+@implementation SitumWayfindingPlugin
 
 -(PluginMapViewController *)getMapViewController:(UIView *)view{
     for (UIView *view in self.viewController.view.subviews){
