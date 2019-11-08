@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-wayfinding",
+  "version": "0.0.1",
+  "description": "Plugin to use SitumWayfinding from Cordova",
+  "cordova": {
+    "id": "cordova-plugin-wayfinding",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "Situm Tech",
+  "license": "MIT"
+}
