@@ -6,11 +6,14 @@
    </js-module>
    <platform name="ios">
       <config-file parent="/*" target="config.xml">
+         <feature name="SitumWayfindingPlugin">
+            <param name="ios-package" value="SitumWayfindingPlugin"/>
+         </feature>
          <feature name="cordova-plugin-wayfinding">
             <param name="ios-package" value="cordova-plugin-wayfinding" />
          </feature>
       </config-file>
-      <source-file src="src/ios/SitumWayFindingPlugin.m" />
+      <source-file src="src/ios/SitumWayfindingPlugin.m" />
       <podspec>
       		<config>
       			<source url="https://fsvilasubi@bitbucket.org/fsvilasubi/ios-podspec-situm.git"/>
