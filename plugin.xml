@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-wayfinding" version="0.0.1">
+   <name>cordova-plugin-wayfinding</name>
+   <js-module name="cordova-plugin-wayfinding" src="www/cordova-plugin-wayfinding.js">
+      <clobbers target="cordova.plugins.cordova-plugin-wayfinding" />
+   </js-module>
+   <platform name="ios">
+      <config-file parent="/*" target="config.xml">
+         <feature name="cordova-plugin-wayfinding">
+            <param name="ios-package" value="cordova-plugin-wayfinding" />
+         </feature>
+      </config-file>
+      <source-file src="src/ios/SitumWayFindingPlugin.m" />
+      <podspec>
+      		<config>
+      			<source url="https://fsvilasubi@bitbucket.org/fsvilasubi/ios-podspec-situm.git"/>
+        		<source url="https://github.com/CocoaPods/Specs.git"/>
+      		</config>
+      		<pods use-frameworks="true">
+        		<pod name="SitumWayfindingPod" spec="~> 0.1.7" />
+      		</pods>
+      	</podspec>
+   </platform>
+   <platform name="android">
+      <config-file parent="/*" target="res/xml/config.xml">
+         <feature name="cordova-plugin-wayfinding">
+            <param name="android-package" value="cordova-plugin-wayfinding.cordova-plugin-wayfinding" />
+         </feature>
+      </config-file>
+      <config-file parent="/*" target="AndroidManifest.xml" />
+      <source-file src="src/android/cordova-plugin-wayfinding.java" target-dir="src/cordova-plugin-wayfinding/cordova-plugin-wayfinding" />
+   </platform>
+</plugin>
