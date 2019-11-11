@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-wayfinding" version="0.0.1">
    <name>cordova-plugin-wayfinding</name>
-   <js-module name="cordova-plugin-wayfinding" src="www/cordova-plugin-wayfinding.js">
-      <clobbers target="cordova.plugins.cordova-plugin-wayfinding" />
-   </js-module>
+      <js-module name="situmwayfinding-plugin" src="www/cordova-plugin-wayfinding.js">
+         <clobbers target="plugin.situm.wayfinding.situmWayfindingPlugin"/>
+      </js-module>
    <platform name="ios">
       <config-file parent="/*" target="config.xml">
          <feature name="SitumWayfindingPlugin">
