@@ -9,6 +9,11 @@
       "android"
     ]
   },
+  "engines": {
+    "cordovaDependencies": {
+        "0.0.1": { "cordova-plugin-googlemaps": "=2.6.2"}
+    }
+  },
   "keywords": [
     "ecosystem:cordova",
     "cordova-ios",
