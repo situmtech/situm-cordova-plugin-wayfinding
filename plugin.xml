@@ -14,6 +14,7 @@
          </feature>
       </config-file>
       <source-file src="src/ios/SitumWayfindingPlugin.m" />
+      <source-file src="src/ios/SitumWayfindingPlugin.h" />
       <podspec>
       	<config>
             <source url="https://github.com/CocoaPods/Specs.git"/>
