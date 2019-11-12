@@ -6,6 +6,7 @@
 
 @interface SitumWayfindingPlugin ()
 @property (nonatomic) UIView* containerView;
+@property (nonatomic) SitumMapsLibrary *library;
 @end
 
 @implementation SitumWayfindingPlugin
@@ -46,13 +47,18 @@
     Credentials *credentials = [[Credentials alloc] initWithUser:preferences[@"situm_user"] apiKey:preferences[@"situm_api_key"] googleMapsApiKey:preferences[@"google_maps_ios_api_key"]];
     [self.viewController addChildViewController:mapVC];
     [mapVC didMoveToParentViewController:self.viewController];
-    SitumMapsLibrary *library = [[SitumMapsLibrary alloc] initWithContainedBy:self.containerView controlledBy:mapVC];
-    [library setCredentials:credentials];
+    self.library = [[SitumMapsLibrary alloc] initWithContainedBy:self.containerView controlledBy:mapVC];
+    [self.library setCredentials:credentials];
     NSError *error = [[NSError alloc] init];
-    [library loadWithBuildingWithId:preferences[@"situm_building_id"] googleMapsMap:googleMapView error:&error];
+    [self.library loadWithBuildingWithId:preferences[@"situm_building_id"] googleMapsMap:googleMapView error:&error];
     CDVPluginResult* pluginResult = nil;
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];    
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+-(void)stopSitumProcesses:(CDVInvokedUrlCommand*)command{
+    [self.library stopPositioning];
+    [self.library stopNavigation];
 }
 
 - (void)unload:(CDVInvokedUrlCommand*)command
