@@ -18,8 +18,12 @@ SitumWayfindingPlugin.prototype.load = function (map_div, success, error) {
 
 SitumWayfindingPlugin.prototype.unload = function (map, success, error) {
   map.remove();
+  exec(success,  //success callback
+        error,                //error callback
+        "SitumWayfindingPlugin",           //class name
+        "unload",      //action name
+        []);     
 };
-
 
 // Installation constructor that binds SitumWayfindingPlugin to window
 SitumWayfindingPlugin.install = function() {

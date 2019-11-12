@@ -14,15 +14,15 @@
          </feature>
       </config-file>
       <source-file src="src/ios/SitumWayfindingPlugin.m" />
+      <source-file src="src/ios/SitumWayfindingPlugin.h" />
       <podspec>
-      		<config>
-      			<source url="https://fsvilasubi@bitbucket.org/fsvilasubi/ios-podspec-situm.git"/>
-        		<source url="https://github.com/CocoaPods/Specs.git"/>
-      		</config>
-      		<pods use-frameworks="true">
-        		<pod name="SitumWayfindingPod" spec="~> 0.1.7" />
-      		</pods>
-      	</podspec>
+      	<config>
+            <source url="https://github.com/CocoaPods/Specs.git"/>
+      	</config>
+      	<pods use-frameworks="true">
+            <pod name="SitumWayfinding" spec="~> 0.1.7" />
+      	</pods>
+      </podspec>
    </platform>
    <platform name="android">
       <config-file parent="/*" target="res/xml/config.xml">

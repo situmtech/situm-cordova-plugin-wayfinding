@@ -1,14 +1,11 @@
 /********* cordova-plugin-wayfinding.m Cordova Plugin Implementation *******/
 
-#import <Cordova/CDV.h>
+#import "SitumWayfindingPlugin.h"
 #import "PluginMap.h"
-@import SitumWayfindingPod;
+@import SitumWayfinding;
 
-@interface SitumWayfindingPlugin : CDVPlugin {
-  // Member variables go here.
-}
-
-- (void)load:(CDVInvokedUrlCommand*)command;
+@interface SitumWayfindingPlugin ()
+@property (nonatomic) UIView* containerView;
 @end
 
 @implementation SitumWayfindingPlugin
@@ -41,25 +38,28 @@
 {
     PluginMapViewController * mapVC = [self getMapViewController:self.viewController.view];
     GMSMapView *googleMapView = (GMSMapView *)mapVC.view;
-    UIView * containerView=[self replaceMapWithContainerView:mapVC];
-    containerView.backgroundColor = [UIColor redColor];
-    //TODO check if needed
-//    CDVLocation *locationPlugin = [[CDVLocation alloc] init];
-//    [locationPlugin pluginInitialize];
-//    [locationPlugin isLocationServicesEnabled];
+    self.containerView=[self replaceMapWithContainerView:mapVC];
+    self.containerView.backgroundColor = [UIColor redColor];
     
     //SitumWayfinding
     NSMutableDictionary *preferences = [self loadPreferences];
     Credentials *credentials = [[Credentials alloc] initWithUser:preferences[@"situm_user"] apiKey:preferences[@"situm_api_key"] googleMapsApiKey:preferences[@"google_maps_ios_api_key"]];
     [self.viewController addChildViewController:mapVC];
     [mapVC didMoveToParentViewController:self.viewController];
-    SitumMapsLibrary *library = [[SitumMapsLibrary alloc] initWithContainedBy:containerView controlledBy:mapVC];
+    SitumMapsLibrary *library = [[SitumMapsLibrary alloc] initWithContainedBy:self.containerView controlledBy:mapVC];
     [library setCredentials:credentials];
     NSError *error = [[NSError alloc] init];
-    [library loadForCordovaWithBuildingWithId:preferences[@"situm_building_id"] googleMapsMap:googleMapView error:&error];
+    [library loadWithBuildingWithId:preferences[@"situm_building_id"] googleMapsMap:googleMapView error:&error];
     CDVPluginResult* pluginResult = nil;
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];    
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
+
+- (void)unload:(CDVInvokedUrlCommand*)command
+{
+    [self.containerView removeFromSuperview];
+    self.containerView=nil;
+}
+
 
 @end
