@@ -17,11 +17,16 @@ SitumWayfindingPlugin.prototype.load = function (map_div, success, error) {
 };
 
 SitumWayfindingPlugin.prototype.unload = function (map, success, error) {
+  exec(success, 
+        error,               
+        "SitumWayfindingPlugin",           
+        "stopSitumProcesses",      
+        []);   
   map.remove();
-  exec(success,  //success callback
-        error,                //error callback
-        "SitumWayfindingPlugin",           //class name
-        "unload",      //action name
+  exec(success, 
+        error,               
+        "SitumWayfindingPlugin",           
+        "unload",      
         []);     
 };
 

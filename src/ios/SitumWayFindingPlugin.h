@@ -4,6 +4,7 @@
 @import SitumWayfinding;
 
 @interface SitumWayfindingPlugin : CDVPlugin
-- (void)unload:(CDVInvokedUrlCommand*)command;
 - (void)load:(CDVInvokedUrlCommand*)command;
+- (void)stopSitumProcesses:(CDVInvokedUrlCommand*)command;
+- (void)unload:(CDVInvokedUrlCommand*)command;
 @end

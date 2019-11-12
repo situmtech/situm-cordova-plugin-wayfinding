@@ -20,7 +20,7 @@
             <source url="https://github.com/CocoaPods/Specs.git"/>
       	</config>
       	<pods use-frameworks="true">
-            <pod name="SitumWayfinding" spec="~> 0.1.7" />
+            <pod name="SitumWayfinding" spec="~> 0.1.8" />
       	</pods>
       </podspec>
    </platform>
