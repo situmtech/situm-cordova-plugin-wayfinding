@@ -2,7 +2,7 @@
 
 #import <Cordova/CDV.h>
 #import "PluginMap.h"
-@import SitumWayfindingPod;
+@import SitumWayfinding;
 
 @interface SitumWayfindingPlugin : CDVPlugin {
   // Member variables go here.
@@ -56,7 +56,7 @@
     SitumMapsLibrary *library = [[SitumMapsLibrary alloc] initWithContainedBy:containerView controlledBy:mapVC];
     [library setCredentials:credentials];
     NSError *error = [[NSError alloc] init];
-    [library loadForCordovaWithBuildingWithId:preferences[@"situm_building_id"] googleMapsMap:googleMapView error:&error];
+    [library loadWithBuildingWithId:preferences[@"situm_building_id"] googleMapsMap:googleMapView error:&error];
     CDVPluginResult* pluginResult = nil;
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];    
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
