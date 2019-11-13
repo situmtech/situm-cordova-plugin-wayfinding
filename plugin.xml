@@ -6,6 +6,7 @@
       </js-module>
    <platform name="ios">
       <config-file parent="/*" target="config.xml">
+      <hook type="before_build" src="scripts/cordova-hook-build-settings-ios.js" />
          <feature name="SitumWayfindingPlugin">
             <param name="ios-package" value="SitumWayfindingPlugin"/>
          </feature>
