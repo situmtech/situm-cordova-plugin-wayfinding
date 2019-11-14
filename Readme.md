@@ -9,27 +9,24 @@ This plugin uses [GoogleMaps Cordova Plugin](https://github.com/mapsplugin/cordo
 ## Installation
 First you need to install GoogleMaps Cordova Plugin
 
-    ```
     $> cordova plugin add cordova-plugin-googlemaps
-    ```
+    
+Afterwards, install SitumWayfinding Cordova Plugin
 
-And then you can install SitumWayfinding Cordova Plugin
-
-    ```
     $> cordova plugin add cordova-plugin-situmwayfinding
-    ```
+
 
 ## System permission
 
 For your iOS app you have to provide the following permissions
 
-  - **LOCATION_WHEN_IN_USE_DESCRIPTION**<br>
+  - **LOCATION_WHEN_IN_USE_DESCRIPTION**
     A message that tells the user why the app is requesting access to the user’s location information while the app is running in the foreground.
 
-  - **LOCATION_ALWAYS_USAGE_DESCRIPTION**<br>
+  - **LOCATION_ALWAYS_USAGE_DESCRIPTION**
     A message that tells the user why the app is requesting access to the user's location at all times.
 
-  - **NSBluetoothPeripheralUsageDescription**<br>
+  - **NSBluetoothPeripheralUsageDescription**
     A message that tells the user why the app is requesting the ability to connect to Bluetooth peripherals.
 
 
