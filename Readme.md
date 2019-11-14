@@ -26,21 +26,21 @@ Use Cordova CLI utility to install it
 
 ## Using the Plugin
 
-## System permission
+### System permission
 
 For your iOS app you have to provide the following permissions
 
-  - **LOCATION_WHEN_IN_USE_DESCRIPTION**
+  - **NSLocationAlwaysUsageDescription**
     A message that tells the user why the app is requesting access to the user’s location information while the app is running in the foreground.
 
-  - **LOCATION_ALWAYS_USAGE_DESCRIPTION**
+  - **NSLocationAlwaysUsageDescription**
     A message that tells the user why the app is requesting access to the user's location at all times.
 
   - **NSBluetoothPeripheralUsageDescription**
     A message that tells the user why the app is requesting the ability to connect to Bluetooth peripherals.
 
-  - **NSBluetoothAlwaysUsageDescription**
-    A message that tells the user why the app needs access to Bluetooth..
+  - **NSBluetoothAlwaysUsageDescription** (Only if you are targeting iOS13.0 or superior)
+    A message that tells the user why the app needs access to Bluetooth.
 
 
 ### API key (Android and iOS platforms)
@@ -54,9 +54,7 @@ For your iOS app you have to provide the following permissions
     <preference name="SITUM_BUILDING_ID" value="YOUR_BUILDING_ID"/>
   ```
 
-###Usage
-
-#### Accessing plugin object
+### Accessing plugin object
 
 When the device ready event is fired, global cordova variable is injected in namespace. Plugins are available in this variable: plugin.situm.wayfinding.situmWayfindingPlugin. The Situm Cordova Plugin is autowired within this object.
 
@@ -66,9 +64,9 @@ So, all methods are called in the same way, e.g. 'load':
   plugin.situm.wayfinding.situmWayfindingPlugin.load(map_div, function(success) {},function(error) {});
 ```
 
-#### Methods
+### Methods
 
-##### - load
+#### - load
 
 Load SitumWayfinding in the specified div. 
 
@@ -78,12 +76,13 @@ Load SitumWayfinding in the specified div.
 
 This method returns and plugin object.
 
-##### - unload
+#### - unload
 
 Unload SitumWayfinding plugin_object.
 
 ```javascript
   unload("plugin_object", "success_callback", "error_callback")
+```
 
 ## License
 
