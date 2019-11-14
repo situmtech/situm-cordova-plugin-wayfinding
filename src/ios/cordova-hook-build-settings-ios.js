@@ -4,8 +4,6 @@ module.exports = function (ctx) {
     var path = require("path");
     var xcode = require("xcode");
     var deferral = require('q').defer();
-
-    console.log('Executing hoook');
     /**
      * Recursively search for file with the tiven filter starting on startPath
      */
