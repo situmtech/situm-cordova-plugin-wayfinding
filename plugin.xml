@@ -4,6 +4,7 @@
       <js-module name="situmwayfinding-plugin" src="www/cordova-plugin-wayfinding.js">
          <clobbers target="plugin.situm.wayfinding.situmWayfindingPlugin"/>
       </js-module>
+   <dependency id="cordova-plugin-googlemaps" version="2.6.2"/>
    <platform name="ios">
       <config-file parent="/*" target="config.xml">
          <feature name="SitumWayfindingPlugin">
@@ -23,6 +24,8 @@
             <pod name="SitumWayfinding" spec="~> 0.1.8" />
       	</pods>
       </podspec>
+      <hook type="after_plugin_install" src="src/ios/cordova-hook-build-settings-ios.js"/>
+      <hook type="after_platform_add" src="src/ios/cordova-hook-build-settings-ios.js"/>
    </platform>
    <platform name="android">
       <config-file parent="/*" target="res/xml/config.xml">
