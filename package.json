@@ -11,7 +11,9 @@
   },
   "engines": {
     "cordovaDependencies": {
-        "0.0.1": { "cordova-plugin-googlemaps": "=2.6.2"}
+      "0.0.1": {
+        "cordova-plugin-googlemaps": "=2.6.2"
+      }
     }
   },
   "keywords": [
@@ -20,5 +22,13 @@
     "cordova-android"
   ],
   "author": "Situm Tech",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "jsdoc": "rm -rf docs/JSDoc && ./node_modules/.bin/jsdoc -c ./docs/conf.json -d docs/JSDoc"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.5.5",
+    "jsdoc-toolkit": "0.0.2",
+    "tui-jsdoc-template": "^1.2.2"
+  }
 }

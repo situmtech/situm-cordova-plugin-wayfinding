@@ -84,6 +84,20 @@ Unload SitumWayfinding plugin_object.
   unload("plugin_object", "success_callback", "error_callback")
 ```
 
+## Generating JSDoc
+
+The JSDoc is avaible in both, in [Situm Developers Page](http://developers.situm.es/sdk_documentation/wayfinding/jsdoc/latest/SitumWayfindingPlugin.html). and into this project docs folder. However if you want to regenerate JSDoc by yourself, you need to install *Toast UI JSDoc template* via npm. To do it, in the plugin root:
+
+```
+npm install
+npm i -D tui-jsdoc-template
+``` 
+
+And then generate the documentation:
+```
+npm run jsdoc
+``` 
+
 ## License
 
 SitumWayfinding is available under the MIT license. See the LICENSE file for more info.

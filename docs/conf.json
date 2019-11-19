@@ -1,0 +1,31 @@
+{
+    "sourceType": "script",
+    "templates": {
+        "referenceTitle": "Situm Cordova Plugin",
+        "disableSort": false,
+        "name": "Situm",
+        "footerText": "COPYRIGHT © SITUM TECHNOLOGIES 2014 - 2019",
+        "logo": {
+            "url": "https://raw.githubusercontent.com/situmtech/situm-cordova-plugin/master/docs/imagotype-SITUM-transparent-90.png",
+            "width": "90px",
+            "height": "90px",
+            "link": "https://github.com/situmtech/situm-cordova-plugin"
+        },
+        "default": {
+          "staticFiles": {
+              "include": ["docs/static/"]
+          }
+        },
+        "css": [
+            "styles/custom.css"
+        ]
+    },
+    "opts": {
+        "destination": "docs/JSDoc",
+        "encoding": "utf8",
+        "template": "node_modules/tui-jsdoc-template"
+    },
+    "source":{
+        "include": ["www/cordova-plugin-wayfinding.js"]
+    }
+}
