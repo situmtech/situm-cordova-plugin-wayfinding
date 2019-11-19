@@ -1,8 +1,26 @@
 var exec = require('cordova/exec');
 
+/** 
+ * @namespace SitumWayfindingPlugin
+ */
+
 // Empty constructor
 function SitumWayfindingPlugin() {}
 
+
+/**
+ * Loads SitumWayfinding in the specified div.
+ *
+ * @param {string} map_div - Name of the div where SitumWayfinding would be loaded
+ * @param {function} success - Success callback function 
+ * @param {function} error -  Error callback function 
+ * @return {Object} A map object
+ *
+ * @example
+ *
+ *     load(map_div, 
+ function(success) {},function(error) {});
+ */
 SitumWayfindingPlugin.prototype.load = function (map_div, success, error) {
   // Create a Google Maps native view under the map_canvas div.
   var map = plugin.google.maps.Map.getMap(map_div);
@@ -16,6 +34,18 @@ SitumWayfindingPlugin.prototype.load = function (map_div, success, error) {
   return map;
 };
 
+/**
+ * Unloads SitumWayfinding view.
+ *
+ * @param {Object} map - Object to unload
+ * @param {function} success - Success callback function 
+ * @param {function} error -  Error callback function 
+ *
+ *
+ * @example
+ *
+ *     unload(map, function(success) {},function(error) {});
+ */
 SitumWayfindingPlugin.prototype.unload = function (map, success, error) {
   exec(success, 
         error,               
