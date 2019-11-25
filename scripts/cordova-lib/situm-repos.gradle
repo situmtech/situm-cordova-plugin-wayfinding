@@ -1,0 +1,8 @@
+allprojects {
+    repositories {
+        maven { url "https://ci.situm.es/artifactory/jcenter" }
+        maven { url "https://ci.situm.es/artifactory/libs-snapshot-local" }
+        maven { url "https://ci.situm.es/artifactory/libs-release-local" }
+        maven { url "https://repo.situm.es/artifactory/libs-release-local" }
+    }
+}

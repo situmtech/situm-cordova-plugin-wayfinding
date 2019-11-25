@@ -1,0 +1,15 @@
+{
+  "platforms/android/CordovaLib/src/org/apache/cordova/CordovaActivity.java": {
+    "import android.app.Activity;": "import android.support.v7.app.AppCompatActivity;",
+    "extends Activity": "extends AppCompatActivity"
+  },
+  "platforms/android/CordovaLib/build.gradle": {
+    "EOF": "apply from: 'situm-extras.gradle'\n"
+  },
+  "platforms/android/app/build.gradle": {
+    "EOF": "apply from: 'situm-extras.gradle'\n"
+  },
+  "platforms/android/build.gradle": {
+    "EOF": "apply from: 'situm-repos.gradle'\n"
+  }
+}

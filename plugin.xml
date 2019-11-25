@@ -24,8 +24,8 @@
             <pod name="SitumWayfinding" spec="~> 0.1.8" />
       	</pods>
       </podspec>
-      <hook type="after_plugin_install" src="src/ios/cordova-hook-build-settings-ios.js"/>
-      <hook type="after_platform_add" src="src/ios/cordova-hook-build-settings-ios.js"/>
+      <hook type="after_plugin_install" src="scripts/cordova-hook-build-settings-ios.js"/>
+      <hook type="after_platform_add" src="scripts/cordova-hook-build-settings-ios.js"/>
    </platform>
    <platform name="android">
      <config-file parent="/*" target="res/xml/config.xml">
