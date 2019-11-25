@@ -11,7 +11,9 @@
   },
   "engines": {
     "cordovaDependencies": {
-      "0.1.0": { "cordova-plugin-googlemaps": ">2.6.2"}
+      "0.1.0": {
+        "cordova-plugin-googlemaps": ">2.6.2"
+      }
     }
   },
   "keywords": [
