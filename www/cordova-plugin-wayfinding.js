@@ -12,16 +12,17 @@ function SitumWayfindingPlugin() {}
  * Loads SitumWayfinding in the specified div.
  *
  * @param {string} map_div - Name of the div where SitumWayfinding would be loaded
- * @param {function} success - Success callback function 
- * @param {function} error -  Error callback function 
+ * @param {string} settings - Settings used by the native library to configure its behaviour
+ * @param {function} success - Success callback function
+ * @param {function} error -  Error callback function
  * @return {Object} A map object
  *
  * @example
  *
- *     load(map_div, 
+ *     load(map_div,
  function(success) {},function(error) {});
  */
-SitumWayfindingPlugin.prototype.load = function (map_div, success, error) {
+SitumWayfindingPlugin.prototype.load = function (map_div, settings, success, error) {
   // Create a Google Maps native view under the map_canvas div.
   var map = plugin.google.maps.Map.getMap(map_div);
   map.on(plugin.google.maps.event.MAP_READY, function(latLng) {
@@ -29,7 +30,7 @@ SitumWayfindingPlugin.prototype.load = function (map_div, success, error) {
         error,                //error callback
         "SitumWayfindingPlugin",           //class name
         "load",      //action name
-        []);        //args
+        [settings]);        //args
   });
   return map;
 };
