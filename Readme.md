@@ -22,7 +22,7 @@ This plugin uses [GoogleMaps Cordova Plugin](https://github.com/mapsplugin/cordo
     
 Use Cordova CLI utility to install it
 
-    $> cordova plugin add cordova-plugin-situmwayfinding
+    $> cordova plugin add situm-cordova-plugin-wayfinding
 
 ## Using the Plugin
 

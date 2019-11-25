@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-wayfinding" version="0.0.1">
-   <name>cordova-plugin-wayfinding</name>
-      <js-module name="situmwayfinding-plugin" src="www/cordova-plugin-wayfinding.js">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="situm-cordova-plugin-wayfinding" version="0.0.1">
+   <name>situm-cordova-plugin-wayfinding</name>
+      <js-module name="situmwayfinding-plugin" src="www/situm-cordova-plugin-wayfinding.js">
          <clobbers target="plugin.situm.wayfinding.situmWayfindingPlugin"/>
       </js-module>
    <dependency id="cordova-plugin-googlemaps" version="2.6.2"/>
@@ -9,9 +9,6 @@
       <config-file parent="/*" target="config.xml">
          <feature name="SitumWayfindingPlugin">
             <param name="ios-package" value="SitumWayfindingPlugin"/>
-         </feature>
-         <feature name="cordova-plugin-wayfinding">
-            <param name="ios-package" value="cordova-plugin-wayfinding" />
          </feature>
       </config-file>
       <source-file src="src/ios/SitumWayfindingPlugin.m" />
