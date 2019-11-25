@@ -78,7 +78,7 @@ Load SitumWayfinding in the specified div. For more info about the settings obje
           'useDashboardTheme': false
         };
 
-  load("div_id_where_to_place_plugin", "settings", "success_callback", "error_callback");
+  load("div_id_where_to_place_plugin", "librarySettings", "success_callback", "error_callback");
 ```
 
 This method returns a plugin object.
