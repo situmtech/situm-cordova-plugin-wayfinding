@@ -1,3 +1,12 @@
+/**
+* This script finds the gradle configuration in the cordova project and adds
+* the "situm-extras.gradle" and "situm-repos.gradle" to allow the
+* Android Wayfinding aar to be download.
+*
+* It also modifies the Cordova main activity so it extends from
+* AppCompatActivity instead of Activity.
+*/
+
 const path = require('path');
 const fs = require('fs');
 const util = require('util');

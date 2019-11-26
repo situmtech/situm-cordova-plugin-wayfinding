@@ -1,3 +1,8 @@
+/**
+* This scripts add some needed paths top pbxproj in order to compile
+* correctly the module via cocoapods.
+*/
+
 module.exports = function (ctx) {
 
     var fs = require("fs");
@@ -62,7 +67,7 @@ module.exports = function (ctx) {
                         lib_search_paths = new Array();
                         value.buildSettings['LIBRARY_SEARCH_PATHS'] =  lib_search_paths;
                     }
-                    
+
                     //Add new values
                     if (value.buildSettings['LIBRARY_SEARCH_PATHS'] instanceof Array){
                         value.buildSettings['LIBRARY_SEARCH_PATHS'].push('"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)"');
