@@ -1,6 +1,6 @@
 {
   "name": "situm-cordova-plugin-wayfinding",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Plugin to use SitumWayfinding from Cordova",
   "cordova": {
     "id": "situm-cordova-plugin-wayfinding",
