@@ -19,7 +19,7 @@ This plugin uses [GoogleMaps Cordova Plugin](https://github.com/mapsplugin/cordo
 * [Cocoapods](https://cocoapods.org/) (Only if you need your application to run in iOS devices)
 
 ## Plugin installation
-    
+
 Use Cordova CLI utility to install it
 
     $> cordova plugin add situm-cordova-plugin-wayfinding
@@ -61,20 +61,29 @@ When the device ready event is fired, global cordova variable is injected in nam
 So, all methods are called in the same way, e.g. 'load':
 
 ```javascript
-  plugin.situm.wayfinding.situmWayfindingPlugin.load(map_div, function(success) {},function(error) {});
+  plugin.situm.wayfinding.situmWayfindingPlugin.load(map_div, settings, function(success) {},function(error) {});
 ```
 
 ### Methods
 
 #### - load
 
-Load SitumWayfinding in the specified div. 
+Load SitumWayfinding in the specified div. For more info about the settings object, you can [visit the documentation](https://developers.situm.es/sdk_documentation/wayfinding/javadoc/es/situm/wayfinding/LibrarySettings.html).
 
 ```javascript
-  load("div_id_where_to_place_plugin", "success_callback", "error_callback");
+  let librarySettings = {
+          'dashboardUrl': 'https://dashboard.situm.es',
+          'hasSearchView': true,
+          'searchViewPlaceholder': 'Cordova Wayfinding',
+          'useDashboardTheme': false
+        };
+
+  load("div_id_where_to_place_plugin", "librarySettings", "success_callback", "error_callback");
 ```
 
-This method returns and plugin object.
+This method returns a plugin object.
+
+** IMPORTANT NOTE:** The settings parameter, as the time of writing, is only used by the Android platform. It does not create problems if they are used for the iOS platform, they will be silently ignored.
 
 #### - unload
 
@@ -91,12 +100,12 @@ The JSDoc is avaible in both, in [Situm Developers Page](http://developers.situm
 ```
 npm install
 npm i -D tui-jsdoc-template
-``` 
+```
 
 And then generate the documentation:
 ```
 npm run jsdoc
-``` 
+```
 
 ## License
 

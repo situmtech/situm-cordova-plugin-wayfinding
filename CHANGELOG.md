@@ -8,7 +8,11 @@ All non released changes should be in CHANGELOG_UNRELEASED.md file
 
 ---------
 
-## [0.1.0] - 2019-05-23
+## [0.1.0] - 2019-11-26
 
-### Added
+#### Added
+* Add android platform to plugin
 * Initial implementation of Situm Wayfinding Module on Cordova.
+
+#### Changed
+* Change JS load method to include a settings parameter
