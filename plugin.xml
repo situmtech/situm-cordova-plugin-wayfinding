@@ -21,16 +21,28 @@
             <pod name="SitumWayfinding" spec="~> 0.1.8" />
       	</pods>
       </podspec>
-      <hook type="after_plugin_install" src="src/ios/cordova-hook-build-settings-ios.js"/>
-      <hook type="after_platform_add" src="src/ios/cordova-hook-build-settings-ios.js"/>
+      <hook type="after_plugin_install" src="scripts/cordova-hook-build-settings-ios.js"/>
+      <hook type="after_platform_add" src="scripts/cordova-hook-build-settings-ios.js"/>
    </platform>
    <platform name="android">
-      <config-file parent="/*" target="res/xml/config.xml">
-         <feature name="cordova-plugin-wayfinding">
-            <param name="android-package" value="cordova-plugin-wayfinding.cordova-plugin-wayfinding" />
-         </feature>
-      </config-file>
-      <config-file parent="/*" target="AndroidManifest.xml" />
-      <source-file src="src/android/cordova-plugin-wayfinding.java" target-dir="src/cordova-plugin-wayfinding/cordova-plugin-wayfinding" />
+     <config-file parent="/*" target="res/xml/config.xml">
+       <feature name="SitumWayfindingPlugin">
+         <param name="android-package" value="es.situm.wayfinding.SitumWayfindingPlugin" />
+       </feature>
+     </config-file>
+     <config-file parent="/*" target="AndroidManifest.xml">
+     </config-file>
+     <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='MainActivity']" mode="merge">
+       <activity android:theme="@style/situm_cordova_AppTheme" />
+     </edit-config>
+     <!-- Java Sources: -->
+     <source-file src="src/android/SitumWayfindingPlugin.java" target-dir="src/es/situm/wayfinding" />
+     <source-file src="src/android/ModuleCreator.java" target-dir="src/es/situm/wayfinding" />
+     <!-- Resources -->
+     <source-file src="src/android/res-layout/mock_fragment_layout.xml" target-dir="res/layout" />
+     <source-file src="src/android/res-layout/sitummap_creator_layout.xml" target-dir="res/layout" />
+     <source-file src="src/android/res-values/styles.xml" target-dir="res/values" />
+     <!-- Hooks -->
+     <hook type="before_plugin_install" src="scripts/androidBeforePluginInstall.js" />
    </platform>
 </plugin>

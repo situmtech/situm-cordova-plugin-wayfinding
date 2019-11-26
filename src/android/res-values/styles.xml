@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="situm_cordova_AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/situm_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/situm_colorPrimaryDark</item>
+        <item name="colorAccent">@color/situm_colorAccent</item>
+        <item name="drawerArrowStyle">@style/situm_MyDrawerArrowToggle</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
