@@ -11,11 +11,15 @@ This plugin uses [GoogleMaps Cordova Plugin](https://github.com/mapsplugin/cordo
 ### Configure cordova:
 
 * https://cordova.apache.org/docs/en/latest/guide/cli/index.html#installing-the-cordova-cli
+* [Cordova CLI 9.0.0](https://cordova.apache.org/announcements/2019/03/22/cordova-cli-release-9.0.0.html) is recommended
+* [Cordova Lib 9.0.0](https://cordova.apache.org/announcements/2019/03/18/cordova-lib-release-9.0.0.html) is recommended
 
 ### Cordova requirements:
 
 * [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#installing-the-requirements)
+* [Cordova Android 8.0.0](https://cordova.apache.org/announcements/2019/02/16/cordova-android-release-8.0.0.html) or superior is recommended
 * [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#installing-the-requirements)
+* [Cordova iOS 5.0.0](https://cordova.apache.org/announcements/2019/02/09/cordova-ios-release-5.0.0.html) or superior is recommended
 * [Cocoapods](https://cocoapods.org/) (Only if you need your application to run in iOS devices)
 
 ## Plugin installation
@@ -26,7 +30,13 @@ Use Cordova CLI utility to install it
 
 ## Using the Plugin
 
-### System permission
+### System permissions
+
+For your Android app, you will need to grant the following permissions.
+
+  - **ACCESS_COARSE_LOCATION**: Used to provide the positioning system
+  - **ACCESS_FINE_LOCATION**: Used to provide the positioning system
+  - **WRITE_EXTERNAL_STORAGE**: Used to store all the info required by the module
 
 For your iOS app you have to provide the following permissions
 
@@ -48,6 +58,7 @@ For your iOS app you have to provide the following permissions
   You can specify your API keys in `config.xml` file.
 
   ```xml
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="YOUR_GOOGLE_MAPS_ANDROID_KEY"/>
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="YOUR_GOOGLE_MAPS_IOS_KEY"/>
     <preference name="SITUM_USER" value="YOUR_SITUM_USER"/>
     <preference name="SITUM_API_KEY" value="YOUR_SITUM_APIKEY"/>
