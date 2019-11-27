@@ -3,13 +3,13 @@ node('ios') {
         checkout scm
     }
 
-    stage('Add iOS platform'){
-      sh 'npm install cordova'
-      sh './node_modules/cordova/bin/cordova create test-project'
-      sh 'cd test_project && cordova platform add ios@5.0.1'
-    }
-
     try {
+        stage('Add iOS platform'){
+          sh 'npm install cordova'
+          sh './node_modules/cordova/bin/cordova create test-project'
+          sh 'cd test_project && ./node_modules/cordova/bin/cordova platform add ios@5.0.1'
+        }
+
         stage ('Build iOS platform') {
             sh "cd test_project/ && cordova build ios"
         }
@@ -19,7 +19,6 @@ node('ios') {
             sh 'rm -rf node_modules'
         }
     }
-
 }
 
 node('androidci') {
