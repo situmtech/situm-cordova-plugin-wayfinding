@@ -11,7 +11,7 @@ node('ios') {
         }
 
         stage ('Build iOS platform') {
-            sh "cd test_project/ && cordova build ios"
+            sh "cd test-project/ && cordova build ios"
         }
     } finally {
         stage('Clean repo') {
