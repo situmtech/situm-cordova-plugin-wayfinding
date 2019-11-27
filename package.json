@@ -27,7 +27,7 @@
     "jsdoc": "rm -rf docs/JSDoc && ./node_modules/.bin/jsdoc -c ./docs/conf.json -d docs/JSDoc"
   },
   "devDependencies": {
-    "jsdoc": "^3.5.5",
+    "jsdoc": "^3.6.3",
     "jsdoc-toolkit": "0.0.2",
     "tui-jsdoc-template": "^1.2.2"
   }
