@@ -7,7 +7,7 @@ node('ios') {
         stage('Add iOS platform'){
           sh 'npm install cordova'
           sh './node_modules/cordova/bin/cordova create test-project'
-          sh 'cd test_project && ./node_modules/cordova/bin/cordova platform add ios@5.0.1'
+          sh 'cd test-project && ./node_modules/cordova/bin/cordova platform add ios@5.0.1'
         }
 
         stage ('Build iOS platform') {
@@ -15,7 +15,7 @@ node('ios') {
         }
     } finally {
         stage('Clean repo') {
-            sh "rm -rf test_project"
+            sh "rm -rf test-project"
             sh 'rm -rf node_modules'
         }
     }
