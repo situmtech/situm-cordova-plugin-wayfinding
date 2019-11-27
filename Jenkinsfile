@@ -7,11 +7,12 @@ node('ios') {
         stage('Add iOS platform'){
           sh 'npm install cordova'
           sh './node_modules/cordova/bin/cordova create test-project'
-          sh 'cd test-project && ./node_modules/cordova/bin/cordova platform add ios@5.0.1'
+          sh 'cd test-project && ./../node_modules/cordova/bin/cordova platform add ios@5.0.1'
         }
 
         stage ('Build iOS platform') {
-            sh "cd test-project/ && cordova build ios"
+            sh "cd test-project/ && ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding"
+            sh 'cd test-project/ && ./../node_modules/cordova/bin/cordova build ios'
         }
     } finally {
         stage('Clean repo') {
