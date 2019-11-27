@@ -3,17 +3,20 @@ node('ios') {
         checkout scm
     }
 
-    stage('Clean iOS'){
-        sh "cd src/ios && xcodebuild clean -workspace SitumCordovaPlugin.xcworkspace -scheme CordovaLib"
+    stage('Add iOS platform'){
+      sh 'npm install cordova'
+      sh './node_modules/cordova/bin/cordova create test-project'
+      sh 'cd test_project && cordova platform add ios@5.0.1'
     }
 
     try {
-        stage ('Build iOS') {
-            sh "cd src/ios && xcodebuild build -workspace SitumCordovaPlugin.xcworkspace -scheme CordovaLib -destination 'platform=iOS Simulator,name=iPhone 7,OS=11.2'"
+        stage ('Build iOS platform') {
+            sh "cd test_project/ && cordova build ios"
         }
     } finally {
         stage('Clean repo') {
-            sh "cd src/ios && xcodebuild clean -workspace SitumCordovaPlugin.xcworkspace -scheme CordovaLib && rm -rf build/"
+            sh "rm -rf test_project"
+            sh 'rm -rf node_modules'
         }
     }
 
