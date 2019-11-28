@@ -52,7 +52,7 @@ node('ios') {
 }
 
 // NODE Android
-node('androidci') {
+node('vm1-docker') {
 
     stage('Checkout SCM') {
         checkout scm
@@ -61,17 +61,27 @@ node('androidci') {
     try {
 
         stage ('Create test project') {
-          sh 'npm install cordova'
-          sh './node_modules/cordova/bin/cordova create test-project'
+          def kubectl = docker.image('docker-android-cordova')
+          kubectl.pull()
+          kubectl.inside() {
+            //sh 'npm install cordova'
+            sh './node_modules/cordova/bin/cordova create test-project'
+          }
         }
 
         stage('Add Android and plugin'){
-          sh 'cd test-project && ./../node_modules/cordova/bin/cordova platform add android@8.0.0'
-          sh 'cd test-project && ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding'
+          def kubectl = docker.image('docker-android-cordova')
+          kubectl.inside() {
+            sh 'cd test-project && cordova platform add android@8.0.0'
+            sh 'cd test-project && cordova plugin add situm-cordova-plugin-wayfinding'
+          }
         }
 
         stage('Build Android') {
-            sh 'cd test-project/ && ./../node_modules/cordova/bin/cordova build android'
+          def kubectl = docker.image('docker-android-cordova')
+          kubectl.inside() {
+            sh 'cd test-project/ && cordova build android'
+          }
         }
 
         // [27/11/19] TODO: Add test phase
@@ -79,8 +89,11 @@ node('androidci') {
     } finally {
 
         stage('Clean repo') {
-          sh "rm -rf test-project"
-          sh 'rm -rf node_modules'
+          def kubectl = docker.image('node:11.12-slim')
+          kubectl.inside() {
+            sh "rm -rf test-project"
+            //sh 'rm -rf node_modules'
+          }
         }
     }
 }
@@ -104,7 +117,7 @@ node('vm1-docker') {
 
         stage('Archive artifacts'){
             def kubectl = docker.image('node:11.12-slim')
-            kubectl.inside("-u 0") {
+            kubectl.inside("-u 0 --") {
                 sh "apt-get update && apt-get --assume-yes install zip"
                 sh "zip -r JSDoc ./docs/JSDoc/*"
                 archiveArtifacts "JSDoc.zip"
