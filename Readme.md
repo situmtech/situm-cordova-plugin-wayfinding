@@ -93,6 +93,11 @@ Unload SitumWayfinding plugin_object.
   unload("plugin_object", "success_callback", "error_callback")
 ```
 
+## Limitations
+
+* Using the "Go back" button in iOS will block the module for the user. It will be fixed in coming releases.
+* The methods load and unload should be called in that order and only once. Multiple calls to the same method without calling the other first will result in unexpected failure.
+
 ## Generating JSDoc
 
 The JSDoc is avaible in both, in [Situm Developers Page](http://developers.situm.es/sdk_documentation/wayfinding/jsdoc/latest/SitumWayfindingPlugin.html). and into this project docs folder. However if you want to regenerate JSDoc by yourself, you need to install *Toast UI JSDoc template* via npm. To do it, in the plugin root:
