@@ -61,7 +61,7 @@ node('vm1-docker') {
     try {
 
         stage ('Create test project') {
-          def kubectl = docker.image('docker-android-cordova')
+          def kubectl = docker.image('vgaidarji/docker-android-cordova')
           kubectl.pull()
           kubectl.inside() {
             //sh 'npm install cordova'
@@ -70,7 +70,7 @@ node('vm1-docker') {
         }
 
         stage('Add Android and plugin'){
-          def kubectl = docker.image('docker-android-cordova')
+          def kubectl = docker.image('vgaidarji/docker-android-cordova')
           kubectl.inside() {
             sh 'cd test-project && cordova platform add android@8.0.0'
             sh 'cd test-project && cordova plugin add situm-cordova-plugin-wayfinding'
@@ -78,7 +78,7 @@ node('vm1-docker') {
         }
 
         stage('Build Android') {
-          def kubectl = docker.image('docker-android-cordova')
+          def kubectl = docker.image('vgaidarji/docker-android-cordova')
           kubectl.inside() {
             sh 'cd test-project/ && cordova build android'
           }
@@ -89,7 +89,7 @@ node('vm1-docker') {
     } finally {
 
         stage('Clean repo') {
-          def kubectl = docker.image('node:11.12-slim')
+          def kubectl = docker.image('vgaidarji/docker-android-cordova')
           kubectl.inside() {
             sh "rm -rf test-project"
             //sh 'rm -rf node_modules'
