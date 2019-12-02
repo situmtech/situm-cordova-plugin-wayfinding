@@ -26,6 +26,6 @@
         "template": "node_modules/tui-jsdoc-template"
     },
     "source":{
-        "include": ["www/cordova-plugin-wayfinding.js"]
+        "include": ["www/situm-cordova-plugin-wayfinding.js"]
     }
 }
