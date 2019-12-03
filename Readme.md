@@ -10,7 +10,7 @@ This plugin uses [GoogleMaps Cordova Plugin](https://github.com/mapsplugin/cordo
 
 ### Configure cordova:
 
-* https://cordova.apache.org/docs/en/latest/guide/cli/index.html#installing-the-cordova-cli
+* [Install Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/index.html#installing-the-cordova-cli)
 * [Cordova CLI 9.0.0](https://cordova.apache.org/announcements/2019/03/22/cordova-cli-release-9.0.0.html) is recommended
 * [Cordova Lib 9.0.0](https://cordova.apache.org/announcements/2019/03/18/cordova-lib-release-9.0.0.html) is recommended
 
@@ -18,13 +18,19 @@ This plugin uses [GoogleMaps Cordova Plugin](https://github.com/mapsplugin/cordo
 
 * [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#installing-the-requirements)
 * [Cordova Android 8.0.0](https://cordova.apache.org/announcements/2019/02/16/cordova-android-release-8.0.0.html) or superior is recommended
+<<<<<<< HEAD
 * [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#installing-the-requirements)
 * [Cordova iOS 5.0.0](https://cordova.apache.org/announcements/2019/02/09/cordova-ios-release-5.0.0.html) or superior is recommended
 * [Cocoapods](https://cocoapods.org/) (Only if you need your application to run in iOS devices)
+=======
+* [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/#installing-the-requirements)
+* [Cordova iOS 5.0.0](https://cordova.apache.org/announcements/2019/02/09/cordova-ios-release-5.0.0.html) or superior is recommended
+* [Cocoapods](https://guides.cocoapods.org/using/getting-started.html) (Only if you need your application to run in iOS devices)
+>>>>>>> master
 
 ## Plugin installation
 
-Use Cordova CLI utility to install it
+Use Cordova CLI utility to install it in your cordova app:
 
     $> cordova plugin add situm-cordova-plugin-wayfinding
 
@@ -32,7 +38,11 @@ Use Cordova CLI utility to install it
 
 ### System permissions
 
+<<<<<<< HEAD
 For your Android app, you will need to grant the following permissions.
+=======
+For your Android app, the following permissions will be requested to the user:
+>>>>>>> master
 
   - **ACCESS_COARSE_LOCATION**: Used to provide the positioning system
   - **ACCESS_FINE_LOCATION**: Used to provide the positioning system
@@ -94,7 +104,7 @@ Load SitumWayfinding in the specified div. For more info about the settings obje
 
 This method returns a plugin object.
 
-** IMPORTANT NOTE:** The settings parameter, as the time of writing, is only used by the Android platform. It does not create problems if they are used for the iOS platform, they will be silently ignored.
+** IMPORTANT NOTE** The settings parameter, as the time of writing, is only used by the Android platform. It does not create problems if they are used for the iOS platform, they will be silently ignored.
 
 #### - unload
 
@@ -103,6 +113,11 @@ Unload SitumWayfinding plugin_object.
 ```javascript
   unload("plugin_object", "success_callback", "error_callback")
 ```
+
+## Limitations
+
+* Using the "Go back" button in iOS will block the module for the user. It will be fixed in coming releases.
+* The methods load and unload should be called in that order and only once. Multiple calls to the same method without calling the other first will result in unexpected failure.
 
 ## Generating JSDoc
 
