@@ -37,6 +37,7 @@ node('ios-slave') {
         }
 
         stage ('Build iOS platform') {
+            sh '/usr/local/bin/safe-xcode-select /Applications/Xcode.app'
             sh 'cd test-project/ && ./../node_modules/cordova/bin/cordova build ios'
         }
 
