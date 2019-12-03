@@ -1,5 +1,5 @@
 /**
-* NODE iOS & NODE Android
+* NODE iOS-SLAVE
 *
 * The pipeline first installs Cordova CLI and creates a blank project.
 * Next stage adds platform (Android/iOS) and the plugin.
@@ -18,7 +18,7 @@
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '10', numToKeepStr: '5')), pipelineTriggers([])])
 
 // NODE iOS
-node('ios') {
+node('ios-slave') {
 
     stage('Checkout SCM') {
         checkout scm
@@ -51,8 +51,7 @@ node('ios') {
     }
 }
 
-// NODE Android
-node('vm1-docker') {
+node('ios-slave') {
 
     stage('Checkout SCM') {
         checkout scm
@@ -61,27 +60,24 @@ node('vm1-docker') {
     try {
 
         stage ('Create test project') {
-          def kubectl = docker.image('vgaidarji/docker-android-cordova')
-          kubectl.pull()
-          kubectl.inside() {
-            //sh 'npm install cordova'
-            sh './node_modules/cordova/bin/cordova create test-project'
-          }
+          sh 'npm install cordova'
+          sh './node_modules/cordova/bin/cordova create test-project'
         }
 
         stage('Add Android and plugin'){
-          def kubectl = docker.image('vgaidarji/docker-android-cordova')
-          kubectl.inside() {
-            sh 'cd test-project && cordova platform add android@8.0.0'
-            sh 'cd test-project && cordova plugin add situm-cordova-plugin-wayfinding'
-          }
+          sh 'cd test-project && ./../node_modules/cordova/bin/cordova platform add android@8.0.0'
+          sh 'cd test-project && ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding'
         }
 
         stage('Build Android') {
-          def kubectl = docker.image('vgaidarji/docker-android-cordova')
-          kubectl.inside() {
-            sh 'cd test-project/ && cordova build android'
-          }
+          // This script adds a boilerplate for Android Google Maps ApiKey.
+          // Otherwise, the android build will fail duw to cordova-plugin-googlemaps
+          sh '''
+                cd test-project
+                sed -i '\$ d' config.xml
+                echo '<preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="YOUR_GOOGLE_MAPS_ANDROID_KEY"/></widget>' >> config.xml
+            '''
+          sh 'cd test-project/ && source ~/.bash_profile && ./../node_modules/cordova/bin/cordova build android'
         }
 
         // [27/11/19] TODO: Add test phase
@@ -89,11 +85,8 @@ node('vm1-docker') {
     } finally {
 
         stage('Clean repo') {
-          def kubectl = docker.image('vgaidarji/docker-android-cordova')
-          kubectl.inside() {
-            sh "rm -rf test-project"
-            //sh 'rm -rf node_modules'
-          }
+          sh "rm -rf test-project"
+          sh 'rm -rf node_modules'
         }
     }
 }
@@ -110,14 +103,15 @@ node('vm1-docker') {
         stage('Generate JSDoc') {
             def kubectl = docker.image('node:11.12-slim')
             kubectl.pull()
-            kubectl.inside() {
+            kubectl.inside("-u 0") {
+                sh "npm install"
                 sh "npm run jsdoc"
             }
         }
 
         stage('Archive artifacts'){
             def kubectl = docker.image('node:11.12-slim')
-            kubectl.inside("-u 0 --") {
+            kubectl.inside("-u 0") {
                 sh "apt-get update && apt-get --assume-yes install zip"
                 sh "zip -r JSDoc ./docs/JSDoc/*"
                 archiveArtifacts "JSDoc.zip"
