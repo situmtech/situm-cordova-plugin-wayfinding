@@ -18,15 +18,10 @@ This plugin uses [GoogleMaps Cordova Plugin](https://github.com/mapsplugin/cordo
 
 * [Android](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#installing-the-requirements)
 * [Cordova Android 8.0.0](https://cordova.apache.org/announcements/2019/02/16/cordova-android-release-8.0.0.html) or superior is recommended
-<<<<<<< HEAD
 * [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/android/#installing-the-requirements)
 * [Cordova iOS 5.0.0](https://cordova.apache.org/announcements/2019/02/09/cordova-ios-release-5.0.0.html) or superior is recommended
 * [Cocoapods](https://cocoapods.org/) (Only if you need your application to run in iOS devices)
-=======
-* [iOS](https://cordova.apache.org/docs/en/latest/guide/platforms/ios/#installing-the-requirements)
-* [Cordova iOS 5.0.0](https://cordova.apache.org/announcements/2019/02/09/cordova-ios-release-5.0.0.html) or superior is recommended
-* [Cocoapods](https://guides.cocoapods.org/using/getting-started.html) (Only if you need your application to run in iOS devices)
->>>>>>> master
+
 
 ## Plugin installation
 
