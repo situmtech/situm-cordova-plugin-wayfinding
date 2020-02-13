@@ -33,11 +33,7 @@ Use Cordova CLI utility to install it in your cordova app:
 
 ### System permissions
 
-<<<<<<< HEAD
-For your Android app, you will need to grant the following permissions.
-=======
 For your Android app, the following permissions will be requested to the user:
->>>>>>> master
 
   - **ACCESS_COARSE_LOCATION**: Used to provide the positioning system
   - **ACCESS_FINE_LOCATION**: Used to provide the positioning system
