@@ -50,6 +50,8 @@ jobs:
     displayName: Build iOS platform
 
 - job: Build_for_Android
+  pool:
+    vmImage: 'macOS-10.15'
 
   steps:
   - script: |
