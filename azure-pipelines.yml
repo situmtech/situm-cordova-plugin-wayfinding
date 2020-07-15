@@ -12,7 +12,7 @@ variables:
 - group: Passwords
 
 pool:
-  vmImage: 'macOS-10.14'
+  vmImage: 'macOS-10.15'
 
 resources:
   containers:
@@ -50,8 +50,6 @@ jobs:
     displayName: Build iOS platform
 
 - job: Build_for_Android
-  pool:
-    vmImage: 'macOS-10.15'
 
   steps:
   - script: |
