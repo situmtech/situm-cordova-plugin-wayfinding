@@ -32,8 +32,9 @@ jobs:
 
   - script: |
       ls -lahrt 
-      cd test-project && ./../node_modules/cordova/bin/cordova platform add ios@5.0.1
-      cd test-project && ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding
+      cd test-project 
+      ./../node_modules/cordova/bin/cordova platform add ios@5.0.1
+      ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding
     displayName: Add iOS and plugin
 
   - script: |
@@ -50,8 +51,9 @@ jobs:
       displayName: Create test project
 
     - script: |
-        cd test-project && ./../node_modules/cordova/bin/cordova platform add android@8.0.0
-        cd test-project && ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding
+        cd test-project 
+        ./../node_modules/cordova/bin/cordova platform add android@8.0.0
+        ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding
       displayName: Add Android and plugin
 
     - script: |
