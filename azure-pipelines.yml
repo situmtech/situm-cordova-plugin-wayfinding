@@ -20,18 +20,25 @@ resources:
     image: node:11.12-slim
 
 jobs:
-- job: Build_for_IOs
+- job: Build_for_IOs_and_Android
     
   steps:
   - script: |
-      npm install cordova
-      ./node_modules/cordova/bin/cordova create test-project
-
-      ls -lahrt
-    displayName: Create test project
+      sudo xcode-select -switch /Applications/Xcode_11.3.1.app
+      mkdir -p /Users/runner/.cocoapods/repos/ 
+      wget https://github.com/CocoaPods/Specs/archive/master.zip 
+      echo "##########  UNZIPPING FILES  ##########"
+      unzip -qq master.zip
+      echo -n "##########  MOVING TO NEW FOLDER  ##########"
+      mv Specs-master/Specs  /Users/runner/.cocoapods/repos/
+    displayName: Add repo 
 
   - script: |
-      ls -lahrt 
+      npm install cordova
+      ./node_modules/cordova/bin/cordova create test-project
+    displayName: Create test project for IOS
+
+  - script: |
       cd test-project 
       ./../node_modules/cordova/bin/cordova platform add ios@5.0.1
       ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding
@@ -42,13 +49,15 @@ jobs:
       cd test-project/ && ./../node_modules/cordova/bin/cordova build ios
     displayName: Build iOS platform
 
-- job: Build_for_android
+  - script: |
+      rm -rf test-project
+      rm -rf node_modules
+    displayName: Clean repo
 
-  steps:
   - script: |
        npm install cordova
        ./node_modules/cordova/bin/cordova create test-project
-    displayName: Create test project
+    displayName: Create test project for Android
   - script: |
        cd test-project 
        ./../node_modules/cordova/bin/cordova platform add android@8.0.0
