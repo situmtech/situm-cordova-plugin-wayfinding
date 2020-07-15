@@ -26,9 +26,12 @@ jobs:
   - script: |
       npm install cordova
       ./node_modules/cordova/bin/cordova create test-project
+
+      ls -lahrt
     displayName: Create test project
 
   - script: |
+      ls -lahrt 
       cd test-project && ./../node_modules/cordova/bin/cordova platform add ios@5.0.1
       cd test-project && ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding
     displayName: Add iOS and plugin
