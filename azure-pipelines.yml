@@ -11,21 +11,93 @@ pr: none
 variables:
 - group: Passwords
 
-resources:
-  repositories:
-  - repository: sys_kubernetes_templates
-    type: bitbucket
-    endpoint: Bitbucket - sistemas
-    name: situm/sys-kubernetes-templates.git
-
 pool:
-  vmImage: 'macOS-latest'
+  vmImage: 'macOS-10.14'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+resources:
+  containers:
+  - container: node_slim
+    image: node:11.12-slim
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: Build_for_IOs
+    
+  steps:
+  - script: |
+     sudo xcode-select -switch /Applications/Xcode_11.3.1.app
+     mkdir -p /Users/runner/.cocoapods/repos/ 
+     wget https://github.com/CocoaPods/Specs/archive/master.zip 
+     echo "##########  UNZIPPING FILES  ##########"
+     unzip -qq master.zip
+     echo -n "##########  MOVING TO NEW FOLDER  ##########"
+     mv Specs-master/Specs  /Users/runner/.cocoapods/repos/
+    displayName: Add repo 
+
+  - script: |
+      npm install cordova
+      ./node_modules/cordova/bin/cordova create test-project
+
+      ls -lahrt
+    displayName: Create test project
+
+  - script: |
+      ls -lahrt 
+      cd test-project 
+      ./../node_modules/cordova/bin/cordova platform add ios@5.0.1
+      ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding
+    displayName: Add iOS and plugin
+
+  - script: |
+      sudo xcode-select -switch /Applications/Xcode_11.3.1.app
+      cd test-project/ && ./../node_modules/cordova/bin/cordova build ios
+    displayName: Build iOS platform
+
+- job: Build_for_android
+
+  steps:
+   - script: |
+       sudo xcode-select -switch /Applications/Xcode_11.3.1.app
+       mkdir -p /Users/runner/.cocoapods/repos/ 
+       wget https://github.com/CocoaPods/Specs/archive/master.zip 
+       echo "##########  UNZIPPING FILES  ##########"
+       unzip -qq master.zip
+       echo -n "##########  MOVING TO NEW FOLDER  ##########"
+       mv Specs-master/Specs  /Users/runner/.cocoapods/repos/
+     displayName: Add repo 
+   - script: |
+       npm install cordova
+       ./node_modules/cordova/bin/cordova create test-project
+     displayName: Create test project
+   - script: |
+       cd test-project 
+       ./../node_modules/cordova/bin/cordova platform add android@8.0.0
+       ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding
+     displayName: Add Android and plugin
+   - script: |
+       cd test-project
+       sed -i '\$ d' config.xml
+       echo '<preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="YOUR_GOOGLE_MAPS_ANDROID_KEY"/></widget>' >> config.xml
+       cd test-project/ && source ~/.bash_profile && ./../node_modules/cordova/bin/cordova build android
+     displayName: Build Android
+
+- job: Build_with_docker
+
+  pool:
+    vmImage: 'ubuntu-latest'
+  
+  steps:
+    - script: |
+        npm install
+        npm run jsdoc
+      target: node_slim
+      displayName: Generate JSDoc
+    
+    - script: |
+        zip -r JSDoc ./docs/JSDoc/*
+      displayName: Archive artifacts
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: 'JSDoc.zip'
+        artifactName: 'JSDoc' 
+      displayName: Archive
