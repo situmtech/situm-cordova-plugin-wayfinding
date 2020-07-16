@@ -69,7 +69,7 @@ jobs:
 
   - script: |
        cd test-project
-       #sed -i '$ d' config.xml
+       sed -i '$ d' config.xml
        echo '<preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="YOUR_GOOGLE_MAPS_ANDROID_KEY"/></widget>' >> config.xml
        source ~/.bash_profile && ./../node_modules/cordova/bin/cordova build android
     displayName: Build Android
