@@ -61,6 +61,12 @@ jobs:
        ./../node_modules/cordova/bin/cordova platform add android@8.0.0
        ./../node_modules/cordova/bin/cordova plugin add situm-cordova-plugin-wayfinding
     displayName: Add Android and plugin
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: 'test-project/config.xml'
+      artifactName: 'config' 
+    displayName: Archive
+
   - script: |
        cd test-project
        #sed -i '$ d' config.xml
