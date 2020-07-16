@@ -25,6 +25,8 @@ resources:
 
 jobs:
 - job: Build_for_IOs
+  pool:
+    vmImage: 'macOS-10.14'
     
   steps:
   - script: |
