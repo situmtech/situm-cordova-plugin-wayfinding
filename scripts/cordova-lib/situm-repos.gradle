@@ -1,6 +1,6 @@
 allprojects {
     repositories {
-        maven { url "https://repo.situm.es/artifactory/jcenter" }
+        jcenter()
         maven { url "https://repo.situm.es/artifactory/libs-release-local" }
     }
 }
