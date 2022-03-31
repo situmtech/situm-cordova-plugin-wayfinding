@@ -6,6 +6,11 @@ Situm Wayfinding Module has been designed to create indoor location applications
 
 This plugin uses [GoogleMaps Cordova Plugin](https://github.com/mapsplugin/cordova-plugin-googlemaps)
 
+## Submitting Contributions
+
+You will need to sign a Contributor License Agreement (CLA) before making a submission. 
+[Learn more here.](https://situm.com/contributions/)
+
 ## Installing pre-requisites
 
 ### Configure cordova:
