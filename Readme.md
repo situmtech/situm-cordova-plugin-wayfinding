@@ -1,7 +1,7 @@
 # Cordova SitumWayfinding plugin for Android and iOS
 
 > **Warning**
-> This plugin is deprecated. Use [Situm Capacitor Wayfinding](https://situm.com/docs/capacitor-wayfinding-quickstart-guide/) instead.
+> This plugin is deprecated. Use [Situm Capacitor Wayfinding](https://github.com/situmtech/situm-capacitor-plugin-wayfinding) instead.
 
 ## Description
 
