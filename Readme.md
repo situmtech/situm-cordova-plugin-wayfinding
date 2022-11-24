@@ -1,5 +1,8 @@
 # Cordova SitumWayfinding plugin for Android and iOS
 
+> **Warning**
+> This plugin is deprecated. Use [Situm Capacitor Wayfinding](https://situm.com/docs/capacitor-wayfinding-quickstart-guide/) instead.
+
 ## Description
 
 Situm Wayfinding Module has been designed to create indoor location applications in the simplest way. It has been built in the top of the Situm SDK. This plugin allows you to use SitumWayfinding in your Cordova plugins.
